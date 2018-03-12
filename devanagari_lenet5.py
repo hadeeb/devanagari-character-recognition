@@ -4,7 +4,7 @@ from six.moves import cPickle as pickle
 from six.moves import range
 
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Flatten,Convolution2D, MaxPooling2D, Dropout
+from keras.layers import Dense, Activation, Flatten, Conv2D, MaxPooling2D, Dropout
 from keras.optimizers import SGD
 from keras.utils.np_utils import to_categorical
 from keras.callbacks import EarlyStopping
@@ -42,12 +42,11 @@ print('Test set', test_dataset.shape, test_labels.shape)
 
 model = Sequential()
 
-model = Sequential()
-model.add(Convolution2D(100, 5, 5, border_mode='valid', input_shape=(1, 32, 32)))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(100, (1,1), input_shape=(1, 32, 32), padding='valid'))
+model.add(MaxPooling2D(pool_size=(1, 1)))
 model.add(Activation('tanh'))
-model.add(Convolution2D(250, 5, 5, border_mode='valid'))
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(Conv2D(250, (1, 1), padding='valid'))
+model.add(MaxPooling2D(pool_size=(1, 1)))
 model.add(Activation('tanh'))
 model.add(Flatten())
 model.add(Dense(1000))
@@ -65,3 +64,4 @@ model.fit(train_dataset, train_labels, batch_size=batch_size, nb_epoch=nb_epoch,
 score = model.evaluate(test_dataset, test_labels, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
+model.save("model.h5")
