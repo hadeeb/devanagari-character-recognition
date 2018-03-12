@@ -1,5 +1,5 @@
 # Dataset
-Download the dataset from [http://cvresearchnepal.com/wordpress/dhcd/](http://cvresearchnepal.com/wordpress/dhcd/)
+Download the dataset from [https://archive.ics.uci.edu/ml/machine-learning-databases/00389/DevanagariHandwrittenCharacterDataset.zip](https://archive.ics.uci.edu/ml/machine-learning-databases/00389/DevanagariHandwrittenCharacterDataset.zip)
 
 Extract and place the Train and Test folders in this directory
 
