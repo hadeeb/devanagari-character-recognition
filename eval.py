@@ -8,7 +8,7 @@ ap.add_argument("-i", "--image", required = True,
                 help="Path to the image to be scanned")
 args = vars(ap.parse_args())
 
-model = load_model("model.save")
+model = load_model("model.h5")
 
 image = cv2.imread(args["image"])
 def predict(img):
